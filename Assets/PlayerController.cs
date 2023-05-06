@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
 
     public float moveSpeed = 5f;
+    public float poweredUpSpeed = 15f;   
     public Rigidbody2D rb;
     public Weapon weapon;
 
@@ -37,6 +38,22 @@ public class PlayerController : MonoBehaviour
         rb.rotation = aimAngle;
 
 
+
+    }
+
+
+    private void OnTriggerEnter2D(UnityEngine.Collider2D other)
+    {
+        if (other.tag == "Water")
+        {
+            Destroy(gameObject);
+        }
+
+        if (other.tag == "SpeedPowerUp")
+        {
+            Destroy(other.gameObject);
+            moveSpeed = poweredUpSpeed;
+        }
 
     }
 }
