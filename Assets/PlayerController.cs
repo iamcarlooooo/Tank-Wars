@@ -55,5 +55,10 @@ public class PlayerController : MonoBehaviour
             moveSpeed = poweredUpSpeed;
         }
 
+        if (other.tag == "Wall")
+        {
+            Destroy(other.gameObject);
+        }
+
     }
 }
